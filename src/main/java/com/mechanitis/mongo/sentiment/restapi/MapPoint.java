@@ -1,4 +1,4 @@
-package com.mechanitis.mongo.sentiment;
+package com.mechanitis.mongo.sentiment.restapi;
 
 import com.mechanitis.mongo.sentiment.processor.HappyStatus;
 import com.mechanitis.mongo.sentiment.processor.SadStatus;

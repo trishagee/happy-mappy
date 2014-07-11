@@ -1,4 +1,4 @@
-package com.mechanitis.mongo.sentiment;
+package com.mechanitis.mongo.sentiment.restapi;
 
 import com.mongodb.MongoClient;
 import com.yammer.dropwizard.Service;
