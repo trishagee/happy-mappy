@@ -19,7 +19,7 @@ class TwitterStreamListener implements StatusListener {
     public void onStatus(Status status) {
         if (status.getGeoLocation() != null && meetsCriteria(status)) {
             System.out.println(status.getGeoLocation());
-            datastore.save(status);
+            datastore.save(new RawStatus(status));
         }
     }
 
