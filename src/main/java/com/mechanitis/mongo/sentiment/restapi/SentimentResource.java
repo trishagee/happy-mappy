@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Stream.concat;
 
 @Path("/sentiment")
 @Produces(MediaType.APPLICATION_JSON)
@@ -28,11 +29,11 @@ public class SentimentResource {
     @GET
     public List<MapPoint> getSentiments() {
         Stream<MapPoint> happyPoints = datastore.find(HappyStatus.class).asList()
-                                                .stream().map(happyStatus -> new MapPoint(happyStatus));
+                                                .stream().map(MapPoint::new);
 
         Stream<MapPoint> sadPoints = datastore.find(SadStatus.class).asList()
-                                              .stream().map(sadStatus -> new MapPoint(sadStatus));
-        return Stream.concat(happyPoints, sadPoints).collect(toList());
+                                              .stream().map(MapPoint::new);
+        return concat(happyPoints, sadPoints).collect(toList());
     }
 
 }
