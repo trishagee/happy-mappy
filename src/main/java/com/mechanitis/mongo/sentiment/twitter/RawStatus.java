@@ -11,6 +11,7 @@ import twitter4j.User;
 
 import java.util.Date;
 
+@Entity
 public class RawStatus {
     @Transient
     private Status status;
@@ -50,5 +51,9 @@ public class RawStatus {
 
     public long getId() {
         return id;
+    }
+
+    public GeoLocation getGeoLocation() {
+        return geoLocation;
     }
 }
