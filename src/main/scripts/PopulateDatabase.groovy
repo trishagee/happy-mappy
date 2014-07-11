@@ -1,9 +1,9 @@
 import org.mongodb.MongoClients
 import org.mongodb.connection.ServerAddress
 
-// ONLY FOR PROTOTYPING
+// Clean out raw twitter data
 def mongoClient = MongoClients.create(new ServerAddress())
-def collection = mongoClient.getDatabase("MongoDBHappinessIndex").getCollection("ProcessedPoints")
+def collection = mongoClient.getDatabase("MongoDBHappinessIndex").getCollection("StatusJSONImpl")
 collection.tools().drop()
 
 //def xmlSlurper = new XmlSlurper().parse(new File('resources/all-coffee-shops.xml'))
