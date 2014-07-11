@@ -2,3 +2,4 @@
 *.iml
 build/*
 out/*
+twitter4j.properties
