@@ -4,6 +4,10 @@ import com.yammer.dropwizard.Service;
 import com.yammer.dropwizard.assets.AssetsBundle;
 import com.yammer.dropwizard.config.Bootstrap;
 import com.yammer.dropwizard.config.Environment;
+import org.mongodb.MongoClient;
+import org.mongodb.MongoClients;
+import org.mongodb.MongoDatabase;
+import org.mongodb.connection.ServerAddress;
 
 public class HappyService extends Service<SentimentConfiguration> {
 
@@ -19,6 +23,9 @@ public class HappyService extends Service<SentimentConfiguration> {
 
     @Override
     public void run(final SentimentConfiguration configuration, final Environment environment) throws Exception {
-        environment.addResource(new SentimentResource());
+        MongoClient mongoClient = MongoClients.create(new ServerAddress());
+        
+        environment.addResource(new SentimentResource(mongoClient.getDatabase("MongoDBHappinessIndex")));
+        environment.manage(new MongoClientManager(mongoClient));
     }
 }
